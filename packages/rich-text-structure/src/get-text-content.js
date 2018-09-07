@@ -1,18 +1,7 @@
-/**
- * Internal dependencies
- */
-
-import { isCollapsed } from './is-collapsed';
-
-export function getTextContent( { text, value, selection } ) {
+export function getTextContent( { text, value } ) {
 	if ( value !== undefined ) {
 		if ( Array.isArray( value ) ) {
-			if ( isCollapsed( { selection } ) ) {
-				const [ index ] = selection.start;
-				return value[ index ].text;
-			}
-
-			return '';
+			return value.map( ( item ) => item.text );
 		}
 
 		return value.text;
